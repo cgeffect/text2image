@@ -8,8 +8,10 @@ from diffusers import StableDiffusionPipeline
 # 第 1 步：在这里配置参数（直接在 PyCharm 运行即可，无需命令行参数）。
 CONFIG = {
     "model": "runwayml/stable-diffusion-v1-5",  # 使用的模型 ID（也可以换成本地模型目录）
-    "prompt": "年轻工程师人像，头肩构图，清晰对焦，柔和侧光",  # 正向提示词：描述你希望生成的内容
-    "negative_prompt": "畸形，脸部变形，模糊，水印，文字",  # 反向提示词：描述你不希望出现的问题
+    # 正向/反向各自约 77 CLIP tokens：越靠前的词越不容易被截断；删同义词堆叠；头像类把「主体+取景+光+肤质+清晰」放最前。
+    # SD1.5 英语训练数据多，关键词用英文常更稳；可与极短中文混用，但控制总长度。
+    "prompt": "beautiful young woman, portrait headshot, soft side light, clear skin, sharp focus, photorealistic",
+    "negative_prompt": "deformed, ugly, blurry, low quality, bad anatomy, extra fingers, watermark, text",
     "width": 512,  # 图片宽度（分辨率越高，通常越慢、占用越高）
     "height": 512,  # 图片高度（建议先用 512x512 稳定跑通）
     "steps": 20,  # 采样步数（越高通常细节更好，但耗时更长）
