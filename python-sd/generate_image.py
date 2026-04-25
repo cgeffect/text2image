@@ -8,15 +8,15 @@ from diffusers import StableDiffusionPipeline
 # 第 1 步：在这里配置参数（直接在 PyCharm 运行即可，无需命令行参数）。
 CONFIG = {
     "model": "runwayml/stable-diffusion-v1-5",  # 使用的模型 ID（也可以换成本地模型目录）
-    # 正向/反向各自约 77 CLIP tokens：越靠前的词越不容易被截断；删同义词堆叠；头像类把「主体+取景+光+肤质+清晰」放最前。
-    # SD1.5 英语训练数据多，关键词用英文常更稳；可与极短中文混用，但控制总长度。
-    "prompt": "beautiful young woman, portrait headshot, soft side light, clear skin, sharp focus, photorealistic",
-    "negative_prompt": "deformed, ugly, blurry, low quality, bad anatomy, extra fingers, watermark, text",
-    "width": 512,  # 图片宽度（分辨率越高，通常越慢、占用越高）
-    "height": 512,  # 图片高度（建议先用 512x512 稳定跑通）
-    "steps": 20,  # 采样步数（越高通常细节更好，但耗时更长）
-    "cfg": 7.0,  # 提示词遵循强度（常用 6~8，越高越“听 prompt”）
-    "seed": 42,  # 随机种子（固定后可复现结果，换 seed 可生成不同构图）
+    # 正向/反向各自约 77 CLIP tokens。亚洲面孔 + 人物/面部居中 + 全脸勿贴边（避免左右被裁）。
+    # 仍裁脸时：换 seed，或略加宽高（保持 8 倍数），或略降 cfg。
+    "prompt": "anime style, cute East Asian schoolgirl, face close-up portrait, straight-on front view, looking at viewer, centered symmetrical composition, full face visible, long loose hair, closed-mouth gentle smile, blue sky and white clouds background, vibrant colors, clean line art, soft shading, high detail",
+    "negative_prompt": "photorealistic, realistic skin texture, adult woman, mature face, sexy, cleavage, arms, hands, fingers, upper body, full body, profile, side view, off-center, cropped face, open mouth, teeth, monochrome, black and white, blurry, low quality, watermark, text",
+    "width": 512,
+    "height": 640,  # 更紧的脸部竖构图（须为 8 的倍数）
+    "steps": 24,
+    "cfg": 7.8,  # 二次元风格可略高一点，增强风格一致性
+    "seed": 123,  # 随机种子（固定后可复现结果，换 seed 可生成不同构图）
     "outdir": "./outputs",  # 输出目录（生成结果保存位置）
 }
 

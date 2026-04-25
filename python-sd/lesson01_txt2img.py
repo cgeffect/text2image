@@ -13,9 +13,9 @@ from PIL import Image
 
 CONFIG = {
     "model": "runwayml/stable-diffusion-v1-5",
-    # 人像防变形提示词：主体、构图、镜头、光线都要明确。
-    "prompt": "亚洲年轻女士全身照，非常性感",
-    "negative_prompt": "身体变形",
+    # 人像：全身、偏时尚/妩媚气质（非露骨描写）；仍受 prompt_max_chars / tokenizer 截断约束。
+    "prompt": "年轻亚洲女性，性感礼服全身照，影楼柔光妩媚",
+    "negative_prompt": "身体变形，糊脸，畸形手指，低质",
     "width": 384,
     "height": 512,
     "steps": 24,

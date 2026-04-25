@@ -2,6 +2,11 @@
 
 这个目录提供一个脚本版最小方案：不用 UI，也能直接通过 Python 传入 prompt 生成图片。
 
+### 英文 prompt 与脚本里的英文注释
+
+- **原因**：`runwayml/stable-diffusion-v1-5` 属于 SD **v1** 路线，训练数据以 **LAION 英文图文对**为主；官方 [Stable Diffusion v1 Model Card](https://github.com/CompVis/stable-diffusion/blob/main/Stable_Diffusion_v1_Model_Card.md) 标明 **Language(s): English**，并说明非英文 prompt 效果弱于英文。示例里用英文 tag，出图更稳、也和 Civitai / 模型卡用语一致。
+- **注释**：与进模型的关键词同源书写，避免「中文注释很细、模型却只懂英文分布」的误解；详细中文说明见仓库根目录 `README.md` 与各课 `.md`。
+
 ## 1) 激活环境
 
 ```bash

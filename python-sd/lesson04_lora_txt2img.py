@@ -19,11 +19,11 @@ PROFILES = {
 
 CONFIG = {
     "model": "runwayml/stable-diffusion-v1-5",
-    "lora_path": "/Users/tfwang/Downloads/LoRA.safetensors",  # 例如: "/path/to/your_lora.safetensors"
+    "lora_path": "./LoRA.safetensors",  # 例如: "/path/to/your_lora.safetensors"
     "lora_scales": [0.5, 0.7],  # 会被 PROFILE 覆盖
     # 人像防变形提示词（英文更贴近 SD1.5 训练语料，通常更稳定）
-    "prompt": "电影感人物肖像，头肩构图，人物居中，柔和逆光，清晰对焦",
-    "negative_prompt": "畸形，脸部变形，眼睛不对称，多余手指，手部畸形，模糊，低清晰度，水印，文字",
+    "prompt": "cute sweet East Asian girl, close-up portrait, straight-on front view, facing camera, centered composition, full face visible, big bright eyes, gentle smile, pastel makeup, colorful, vibrant colors, soft daylight, sharp focus, photorealistic",
+    "negative_prompt": "monochrome, black and white, grayscale, desaturated, profile, side view, off-center subject, cropped at edge, face cut off, partial face, asymmetrical face, deformed, blurry, low quality, watermark, text",
     "steps": 14,  # 会被 PROFILE 覆盖
     "seed": 42,
     "width": 320,  # 会被 PROFILE 覆盖
